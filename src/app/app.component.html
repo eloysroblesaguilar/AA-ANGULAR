@@ -1,0 +1,24 @@
+<form novalidate>
+  <div *ngIf="email.touched && !email.valid">Email is required</div>
+  <div *ngIf="password.touched && !password.valid">Password is required</div>
+  <div class="form-group">
+    <label for="email">E-mail: </label>
+    <input required ngModel name="email" #email="ngModel" (change)="log(email)" class="form-control" id="email" type='email'/>
+  </div>
+  <div *ngIf="email.touched && !email.valid">Email is required</div>
+  <div class="form-group">
+    <label for="status">Status: </label>
+    <select [(ngModel)]="status" name="status"  class="form-control" id="status">
+      <option value='Executive Platinum'>Executive Platinum</option>
+      <option value='Platinum'>Platinum</option>
+      <option value="Platinum Pro">Platinum Pro</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="password">Password: </label>
+    <input required ngModel pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/" name="password" #password="ngModel" minlength="8" class="form-control" id="password" type="password">
+  </div>
+  <div *ngIf="password.touched && !password.valid">Password is required</div>
+  <input type="reset" (click)="confirmreset()">
+
+</form>
